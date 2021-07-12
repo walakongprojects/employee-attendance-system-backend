@@ -28,7 +28,8 @@ router.get('/:_from/:_to', async(req, res) => {
     _from = _from.replace('-', ',')
     _to = _to.replace('-', ',')
     const MILLISECONDS_PER_DAY = 86400000
-    const offset = 50400000
+    const offset = 0
+    // const offset = 50400000
     const dateFrom = new Date(new Date(_from).getTime() + MILLISECONDS_PER_DAY - offset)
     const dateTo = new Date(new Date(_to).getTime() + MILLISECONDS_PER_DAY - offset)
     console.log(dateFrom, 'dateFrom')
