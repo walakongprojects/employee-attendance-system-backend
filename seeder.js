@@ -10,12 +10,14 @@ const seed = async () => {
         const newAdmin = await adminModel.create({
             username: 'adminOne',
             name: 'John Doe',
-            password: await argon2.hash('adminadmin')
+            password: await argon2.hash('adminadmin'),
+            level: 1
         })
         console.log('Admin is created')
         return
     }
     console.log('Admin already exist.')
+    process.exit(0)
 }
 
 seed()
