@@ -65,7 +65,7 @@ export const Login = () => {
                     <Formik
                     validationSchema={schema}
                     onSubmit={async (values) => {
-                        const result = await axios.post(`${API_URL}/login`, {
+                        const result = await axios.post(`/login`, {
                             username: values.username,
                             password: values.password
                         })

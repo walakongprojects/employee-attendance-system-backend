@@ -26,7 +26,7 @@ export const Admin = () => {
     const [errorText, setErrorText] = useState('')
 
     const getAdmin = async () => {
-        const result = await axios.get(`${API_URL}/admin/${_id}`)
+        const result = await axios.get(`/admin/${_id}`)
         setData(result.data.result)
     }
 
@@ -69,7 +69,7 @@ export const Admin = () => {
                 <Formik
                     validationSchema={schema}
                     onSubmit={async (values) => {
-                        const result = await axios.put(`${API_URL}/admin/${_id}`, {
+                        const result = await axios.put(`/admin/${_id}`, {
                             name: values.firstName,
                             username: values.username,
                             password: values.password,

@@ -37,7 +37,7 @@ export const CreateAdmin = () => {
         validationSchema={schema}
         onSubmit={async (values) => {
           console.log({...values}, 'values')
-          const result = await axios.post(`${API_URL}/admin`, {
+          const result = await axios.post(`/admin`, {
             name: values.firstName,
             username: values.username,
             password: values.password,

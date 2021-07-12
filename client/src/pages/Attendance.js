@@ -16,7 +16,7 @@ export const Attendance = () => {
             const fromDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
             const toDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`
 
-            const result = await axios.get(`${API_URL}/attendance/${fromDate}/${toDate}`)
+            const result = await axios.get(`/attendance/${fromDate}/${toDate}`)
             setAttendance(result.data.result)
         }
         handleAttendance()
@@ -26,7 +26,7 @@ export const Attendance = () => {
         const fromDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
         const toDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`
 
-        const result = await axios.get(`${API_URL}/attendance/${fromDate}/${toDate}`)
+        const result = await axios.get(`/attendance/${fromDate}/${toDate}`)
         setAttendance(result.data.result)
     }
 

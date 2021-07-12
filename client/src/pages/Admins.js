@@ -11,7 +11,7 @@ export const Admins = () => {
     const history = useHistory()
 
     const handleList = async () => {
-        const result = await axios.get(`${API_URL}/admin`)
+        const result = await axios.get(`/admin`)
         setList(result.data.result)
     }
 
