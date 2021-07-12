@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const passport = require('passport')
+const path = require('path')
 
 // routes
 const employeeRoutes = require('./routes/employee')
