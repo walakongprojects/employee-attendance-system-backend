@@ -43,9 +43,9 @@ app.use('/attendance', attendanceRoutes)
 app.use('/admin', adminRoutes)
 app.use('/', authRoutes)
 
-app.get('')
-process.env['NODE_ENV'] = 'development';
+// process.env['NODE_ENV'] = 'development';
 // Server static assets if in production
+console.log(process.env.NODE_ENV, 'node env')
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
