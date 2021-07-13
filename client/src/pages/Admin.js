@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Button, Row, Col, Alert, Container, Card } from 'react-bootstrap'
-import { Formik } from 'formik';
-import * as yup from 'yup';
 import axios from 'axios'
+import { Formik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
+import * as yup from 'yup';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000'
 
@@ -18,6 +19,7 @@ const schema = yup.object().shape({
 });
 
 export const Admin = () => {
+    const adminInfo = useSelector(state => state.auth)
     const history = useHistory()
     const { _id } = useParams()
     const [data, setData] = useState(null)
@@ -25,12 +27,18 @@ export const Admin = () => {
     const [hasError, setHasError] = useState(false)
     const [errorText, setErrorText] = useState('')
 
+    const handleDelete = async () => {
+        await axios.delete(`/admin/${_id}`)
+        history.push('/admin-list')
+    }
+
     const getAdmin = async () => {
         const result = await axios.get(`/admin/${_id}`)
         setData(result.data.result)
     }
 
     useEffect(() => {
+        console.log('aaa')
         getAdmin()
     }, [])
 
@@ -40,6 +48,15 @@ export const Admin = () => {
             <Col >
                 <Button variant="primary" className="mr-4" onClick={() => history.push('/admin-list')} >Back</Button>
                 <Button variant="warning" onClick={() => setEdit(!edit)} >{!edit ? 'Edit' : 'Cancel'}</Button>
+                {
+                    adminInfo.user.level === 1 && adminInfo.user.id !== _id ?
+                    (
+                        <Button variant="danger" className="ml-4" onClick={handleDelete} >Delete</Button>
+                    ) :
+                    (
+                        null
+                    )
+                }
             </Col>
         </Row>
       {

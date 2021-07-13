@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Button, Row, Col, Alert, Container, Card } from 'react-bootstrap'
-import { Formik } from 'formik';
-import * as yup from 'yup';
 import axios from 'axios'
-import { useHistory } from 'react-router-dom';
-import setAuthToken from '../utils/setAuthToken'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_CURRENT_USER } from '../actions/types';
+import { Formik } from 'formik';
 import jwtDecode from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom';
+import * as yup from 'yup';
+
+import { SET_CURRENT_USER } from '../actions/types';
+import setAuthToken from '../utils/setAuthToken'
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000'
 
@@ -47,7 +48,7 @@ export const Login = () => {
         <Container >
         {
             hasError ? (
-                <Row className="mb-4">
+                <Row className="my-4">
                     <Col className="justify-content-center">
                         <Alert variant='danger'>
                             {errorText}

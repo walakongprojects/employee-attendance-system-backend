@@ -30,8 +30,9 @@ router.get('/:_from/:_to', async(req, res) => {
     const MILLISECONDS_PER_DAY = 86400000
     // const offset = 0
     const offset = 36000000
-    const dateFrom = new Date(new Date(_from).getTime() + MILLISECONDS_PER_DAY - offset)
-    const dateTo = new Date(new Date(_to).getTime() + MILLISECONDS_PER_DAY - offset)
+    const MILLISECONDS_PER_HOUR = 3600000
+    const dateFrom = new Date((new Date(_from).getTime() + MILLISECONDS_PER_DAY) - ((new Date(_from).getTimezoneOffset() / 60) * MILLISECONDS_PER_HOUR))
+    const dateTo = new Date((new Date(_to).getTime() + MILLISECONDS_PER_DAY) - ((new Date(_from).getTimezoneOffset() / 60) * MILLISECONDS_PER_HOUR))
     console.log(dateFrom, 'dateFrom')
     console.log(dateTo, 'tooooo')
 
